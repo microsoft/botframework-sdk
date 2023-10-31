@@ -432,7 +432,7 @@ The `importance` field contains an enumerated set of values to signal to the rec
 The `deliveryMode` field contains any one of an enumerated set of values to signal to the recipient alternate delivery paths for the activity or response. The value of the `deliveryMode` field is of type string, with defined values of `normal`, `notification` and `expectReplies`. The default value is `normal`.
 
 Activities with a `deliveryMode` of `expectReplies` differ only in their requirement to return a response payload back to the caller synchronously, as a direct response to the initial request.
- 
+
 `A3110`: If a sender includes the `deliveryMode` field, it SHOULD only send defined values.
 
 `A3111`: Receivers SHOULD interpret undefined values as `normal`.
@@ -445,7 +445,7 @@ Activities with a `deliveryMode` of `expectReplies` differ only in their require
 
 `A3115`: Senders MUST establish whether a receiver understands `deliveryMode` of `expectReplies` prior to sending activities with that value.
 
-`A3116`: Bots SHOULD NOT send activities with `deliveryMode` of `expectReplies` to channels.  
+`A3116`: Bots SHOULD NOT send activities with `deliveryMode` of `expectReplies` to channels.
 
 ### Listen for
 
@@ -753,7 +753,7 @@ Handoff activities are identified by a `type` value of `handoff`.
 
 ## Command activity
 
-Command activities communicate a request to perform a specific action. They are identified by a `type` value of `command` and specific values of the `name` field. 
+Command activities communicate a request to perform a specific action. They are identified by a `type` value of `command` and specific values of the `name` field.
 
 Commands look similar in structure to events but have different semantics. Commands are requests to perform an action and receivers typically respond with one or more commandResult activities. Receivers are also expected to explicitly reject unsupported command activities.
 
@@ -781,15 +781,15 @@ The recommended patterns for rejecting command activities are included in [Appen
 
 The `value` field contains the command metadata and parameters specific to a command, as defined by the command `name`. The `value` field is a complex object of the [command value](#command-value) type.
 
-`A6321`: Command activities MUST contain a `value` field. 
+`A6321`: Command activities MUST contain a `value` field.
 
 `A6322`: Receivers MUST ignore command activities with missing or invalid `value` field.
 
 ## Command result activity
 
-Command result activities communicate the result of a [command activity](#command-activity). 
+Command result activities communicate the result of a [command activity](#command-activity).
 
-Command result activities are identified by a `type` value of `commandResult` and specific values of the `name` field. The `name` field of a command result is always set to the `name` of the original command activity. 
+Command result activities are identified by a `type` value of `commandResult` and specific values of the `name` field. The `name` field of a command result is always set to the `name` of the original command activity.
 
 `A6400`: Senders MAY send one or more command result activities to communicate the result of the command.
 
@@ -797,7 +797,7 @@ Command result activities are identified by a `type` value of `commandResult` an
 
 The `name` field defines the meaning of the command result activity. The value of the `name` field is of type string.
 
-`A6411`: Command result activities MUST contain a `name` field. 
+`A6411`: Command result activities MUST contain a `name` field.
 
 `A6412`: Receivers MUST ignore command activities with missing or invalid `name` field.
 
@@ -807,7 +807,7 @@ The `name` field defines the meaning of the command result activity. The value o
 
 The `value` field contains the command metadata and additional information specific to a command result, as defined by the command result `name`. The value of the `value` field is a complex object of type [command result value](#command-result-value) type.
 
-`A6421`: Command result activities MUST contain a `value` field. 
+`A6421`: Command result activities MUST contain a `value` field.
 
 `A6422`: Receivers MUST reject command result activities with missing or invalid `value` field.
 
@@ -1431,7 +1431,7 @@ The `data` field contains optional parameters specific to this command activity,
 `A10201`: Extensions to the command activity SHOULD NOT require receivers to use any information other than the activity `type` and `name` fields to understand the schema of the `data` field.
 
 ### Command result Value
-The `value` field of a [command result activity](#command-result-activity) contains metadata related to a command. An optional extensible `data` payload may be included if defined by the command result activity `name`. The presence of an `error` field indicates that the original command failed to complete. 
+The `value` field of a [command result activity](#command-result-activity) contains metadata related to a command. An optional extensible `data` payload may be included if defined by the command result activity `name`. The presence of an `error` field indicates that the original command failed to complete.
 
 #### Command Id
 
@@ -1441,7 +1441,7 @@ The `value` field of a [command result activity](#command-result-activity) conta
 
 The `data` field contains optional additional information specific to this command result activity, as defined by the `name`. The value of the `data` field is a complex type.
 
-`A11200`: The `data` field MAY be missing or empty, if defined by the command result activity name. 
+`A11200`: The `data` field MAY be missing or empty, if defined by the command result activity name.
 
 `A11201`: Extensions to the command result activity SHOULD NOT require receivers to use any information other than the activity `type` and `name` fields to understand the schema of the `data` field.
 
@@ -1476,6 +1476,9 @@ The `error` field contains the reason the original [command activity](#command-a
 19. [IETF BCP-47](https://tools.ietf.org/html/bcp47) -- *Language tag*
 
 # Appendix I - Changes
+
+## 2023-09-22 - hawo@microsoft.com
+* Added [Schema.org Claim](#schema-org-claim) type definition
 
 ## 2020-07-07 - contact.me@nlchar.rocks
 * Fix the broken link to the Bot Framework Manifest Spec in the References section
@@ -1571,6 +1574,7 @@ Activity [entities](#entity) communicate extra metadata about the activity, such
 | string         | N/A                                     | String                    |
 | number         | N/A                                     | Number                    |
 | clientInfo     | N/A                                     | Skype client info         |
+| Claim          | https://schema.org/Claim                | Schema.org Claim          |
 
 ### string and number
 
@@ -1615,6 +1619,26 @@ The `platform` field describes the messaging client platform used to generate th
 Note that on channels with a persistent chat feed, `platform` is typically useful only in deciding which content to include, not the format of that content. For instance, if a user on a mobile device asks for product support help, a bot could generate help specific to their mobile device. However, the user may then re-open the chat feed on their PC so they can read it on that screen while making changes to their mobile device. In this situation, the `platform` field is intended to inform the content, but the content should be viewable on other devices.
 
 `A9230`: Bots SHOULD NOT use the `platform` field to control how response data is formatted unless they have specific knowledge that the content they are sending may only ever be seen on the device in question.
+
+#### Schema.org Claim
+
+A response may sometimes contains references to other work to support facts claimed in the message. These references provide transparency to human users. Human users may use these references to understand system's intended uses, interpret relevant system behavior effectively, and remain aware of the possible tendency of over-relying on outputs produced by the system.
+
+When a reference is not fully accessible by the user, the bot can use [Schema.org Claim](https://schema.org/Claim) to include full or partial text from the original work. The claim is an extension to the activity and must not be cross-referenced from another activity.
+
+Channels decide how the referenced content can be displayed in their user experience. In most cases, contents should be shown in a separate pane, popover, or dialog. In cases where the channel has limited capability to display the content, the channel may use an alternative channel (e.g. a link to a website, or sending the content via email).
+
+`A9240`: The entity MUST include a `type` field, with value of `https://schema.org/Claim`.
+
+`A9241`: The entity MUST include an `@context` field, with value of `https://schema.org`.
+
+`A9242`: The entity MUST include an `@type` field, with value of `Claim`.
+
+`A9243`: The entity SHOULD include an `@id` field, with value of type IRI unique to the activity and referenced in the message `text` field.
+
+`A9244`: The entity MUST include a `text` field of type string, containing full, excerpted, or summarized text from the original work.
+
+`A9245`: The entity MAY include a `name` field of type string.
 
 # Appendix III - Protocols using the Invoke activity
 
@@ -1697,21 +1721,21 @@ The authenticity of a call from a bot can be established by inspecting its JSON 
 # Appendix VI - Protocols using the Command activity
 [Command activities](#command-activity) communicate a request to perform a specific action. Command activities outside the `application` are considered reserved for Bot Framework Protocols. This appendix contains a list of command activities used in Bot Framework protocols and recommended patterns for defining and using command activities.
 
-## Telephony Channel 
+## Telephony Channel
 
-The Microsoft Telephony channel defines channel command activities in the namespace `channel/vnd.microsoft.telephony.<action>`. 
+The Microsoft Telephony channel defines channel command activities in the namespace `channel/vnd.microsoft.telephony.<action>`.
 
 ## Patterns for rejecting commands
 
 ### General pattern for rejecting commands
-The general pattern for rejecting commands is to send an asynchronous commands result with an error. This is used in most cases when the receiver needs to process the command before rejecting it. 
+The general pattern for rejecting commands is to send an asynchronous commands result with an error. This is used in most cases when the receiver needs to process the command before rejecting it.
 
 Here is an example of a command result indicating that the command was not supported by the receiver:
 ```
     {
         'type': 'commandResult'
         'name': 'channel/vnd.microsoft.telephony.<action>'
-        'value': {                        
+        'value': {
             'error' : {
                 'code': 'NotSupported',
                 'message' : 'Command channel/vnd.microsoft.telephony.<action> is not supported'
@@ -1722,4 +1746,3 @@ Here is an example of a command result indicating that the command was not suppo
 
 ### Channel rejecting commands
 Some channels may may not support the command protocol or not allow for application customization of commands. In this case, the channel can reject commands with a transport-level response codes to allow a sender to detect the command activity was rejected. Example: When the transport is HTTP, 200 indicates acceptance and 400 indicates that the Activity name is not supported.
-
