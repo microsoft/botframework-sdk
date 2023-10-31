@@ -942,6 +942,7 @@ A `messageBack` action represents a text response to be sent via the chat system
 * `type` ("`messageBack`")
 * `title`
 * `image`
+* `imageAltText`
 * `text`
 * `displayText`
 * `value` (of any type)
@@ -972,6 +973,7 @@ An `imBack` action represents a text response that is added to the chat feed. IM
 * `type` ("`imBack`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7360`: When activated, channels MUST send an activity of the type `message` to all relevant recipients.
@@ -988,6 +990,7 @@ A `postBack` action represents a text response that is not added to the chat fee
 * `type` ("`postBack`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7370`: When activated, channels MUST send an activity of the type `message` to all relevant recipients.
@@ -1006,6 +1009,7 @@ An `openUrl` action represents a hyperlink to be handled by the client. Open URL
 * `type` ("`openUrl`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7380`: Senders MUST include a URL in the `value` field of an `openUrl` action.
@@ -1026,6 +1030,7 @@ An `downloadFile` action represents a hyperlink to be downloaded. Download File 
 * `type` ("`downloadFile`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7390`: Senders MUST include a URL in the `value` field of an `downloadFile` action.
@@ -1040,6 +1045,7 @@ An `showImage` action represents an image that may be displayed. Show Image uses
 * `type` ("`showImage`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7400`: Senders MUST include a URL in the `value` field of an `showImage` action.
@@ -1054,6 +1060,7 @@ A `signin` action represents a hyperlink to be handled by the client's signin sy
 * `type` ("`signin`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7410`: Senders MUST include a URL in the `value` field of an `signin` action.
@@ -1068,6 +1075,7 @@ A `playAudio` action represents audio media that may be played. Play Audio uses 
 * `type` ("`playAudio`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7420`: When activated, channels MAY play the audio referenced by URI in the `value` field.
@@ -1082,6 +1090,7 @@ A `playVideo` action represents video media that may be played. Play Video uses 
 * `type` ("`playVideo`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7430`: When activated, channels MAY play the video referenced by URI in the `value` field.
@@ -1096,6 +1105,7 @@ A `call` action represents a telephone number that may be called. Call uses the 
 * `type` ("`call`")
 * `title`
 * `image`
+* `imageAltText`
 * `value` (of type string)
 
 `A7440`: Senders MUST include a URL of scheme `tel` in the `value` field of an `signin` action.
