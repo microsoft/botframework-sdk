@@ -516,7 +516,7 @@ Compile and run. The sample will use Orchestrator to arbitrate ("dispatch") to t
 * [Dispatch Sample documentation][1]
 
 [1]:https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs "Legacy dispatch MSDocs"
-[2]:https://github.com/Microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/14.nlp-with-dispatch "14.nlp-with-dispatch C#"
+[2]:https://github.com/microsoft/BotBuilder-Samples/tree/f6af59378a89864754ef36822c4352aad648f426/samples/csharp_dotnetcore/14.nlp-with-dispatch
 [3]:https://aka.ms/bf-orchestrator "Orchestrator"
 [4]:https://luis.ai "LUIS"
 [5]:https://qnamaker.ai "QnAMaker"
