@@ -186,10 +186,7 @@
                 }
             },
             "required": [
-                "conversationType",
-                "id",
-                "isGroup",
-                "name"
+                "id"
             ]
         },
         "MessageReaction": {
