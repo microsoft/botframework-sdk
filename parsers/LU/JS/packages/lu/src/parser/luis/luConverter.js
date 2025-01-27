@@ -182,7 +182,6 @@ const parsePredictedResultToLu =  function(utterance, luisJSON){
         }
         let passText = utterance.predictedResult.EntityPass ? "> PASS." : "> FAIL.";
         if(updatedText) fileContent +=  passText + ' Predicted entities: ' + updatedText + NEWLINE;
-        updatedText = utterance.text;
     }
     return fileContent
 }
