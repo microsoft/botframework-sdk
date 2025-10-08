@@ -1,3 +1,11 @@
+# ARCHIVE NOTICE:
+
+We are in the process of archiving the Bot Framework SDK repository on GitHub. This means that this project will no longer be updated or maintained. Customers using this tool will not be disrupted. However, the tool will no longer be supported through service tickets in the Azure portal and will not receive product updates.
+
+To build agents with your choice of AI services, orchestration, and knowledge, consider using the [Microsoft 365 Agents SDK](aka.ms/agents). The Agents SDK is GA and has support for C#, JavaScript or Python. You can learn more about the Agents SDK at aka.ms/agents. If you're looking for a SaaS-based agent platform, consider Microsoft Copilot Studio. If you have an existing bot built with the Bot Framework SDK, you can update your bot to the Agents SDK. You can review the core changes and updates at Bot Framework SDK to Agents SDK migration guidance [here](https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/bf-migration-guidance). Support tickets for the Bot Framework SDK will no longer be serviced as of December 31, 2025.
+
+We plan to archive this project no later than end of December of 2025.
+
 # ![Bot Framework](./docs/media/BotFrameworkSDK.png)
 
 ### [What's new with Bot Framework?](https://docs.microsoft.com/en-us/azure/bot-service/what-is-new?view=azure-bot-service-4.0)
